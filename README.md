@@ -2,7 +2,7 @@
 
 Created with love by: Huy Tran
 
-View online at:[here](https://agitated-roentgen-062d2a.netlify.com/)
+View online at [here](https://agitated-roentgen-062d2a.netlify.com/)
 
 You can quickly converter currency, just choice currency and type your amount. Program also auto validate your information that you enter.
 
