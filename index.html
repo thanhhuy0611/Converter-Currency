@@ -14,10 +14,10 @@
 
 <body>
     <div class="main">
-        <h1>Converter Currency</h1>
+        <h1 class="elegantshadow">Converter Currency</h1>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Converter from currency</label>
+                <label class="input-group-text" for="inputGroupSelect01">Converter from</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01">
                 <option selected value="0">Choose currency</option>
@@ -39,18 +39,15 @@
                 <option value="eur">EUR</option>
             </select>
         </div>
-        <div class="input-group mb-3 row">
+        <div class="input-group input-group-lg mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Your amount</span>
             </div>
-            <input id="amount" min="0" type="number" class="form-control" aria-label="Default"
+            <input id="amount" min="0" type="number" class="form-control" aria-label="Large"
                 aria-describedby="inputGroup-sizing-default">
-            <div class="input-group-append">
-                <button id="action" class="btn btn-outline-secondary" type="button">Button</button>
-            </div>
         </div>
 
-        <h1>Result</h1>
+        <h2>Result</h2>
         <p id="result">Your amount after converter</p>
     </div>
 

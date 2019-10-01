@@ -45,31 +45,65 @@ function formatFunction(type, value) {
   return formatter.format(value);
 }
 //------------------
-//---function converter
-function converter(amount, from, to) {
+//---------callApi
+async function callApi(amount, from, to) {
   if (from == 0 || to == 0) {
     document.getElementById('result').innerHTML = "<span style='color: red;'>Please select currency</span>";
   } else {
-    if (amount > 0) {
-      const amountConverted = amount * exchangeRates[from][to];
-      //----format amount converted
-      const amountFormated = formatFunction(to, amountConverted);
-      //----print result
-      document.getElementById('result').innerHTML = amountFormated;
-    } else if (amount < 0) {
-      document.getElementById('result').innerHTML = "<span style='color: red;'>Amount have to greater than 0</span>"
-    } else {
-      document.getElementById('result').innerHTML = "<span style='color: red;'>Please input amount and amount greater than 0</sapn>"
-    }
+    let url = 'https://free.currencyconverterapi.com/api/v6/convert?q=' + from + "_" + to + '&compact=y&apiKey=a382c717dedaf2e08af5';
+    let result = await fetch(url);
+    let json = await result.json();
+    const conversion = from + "_" + to;
+    let rate = await json[conversion.toUpperCase()].val;
+    console.log(rate);
+    converter(amount, from, to, rate);
   }
 }
+//--------------------------
+//---function converter
+function converter(amount, from, to, rate) {
+  if (amount === "") {
+    document.getElementById('result').innerHTML = "<span style='color: red;'>Please input amount.</sapn>"
+  }
+  else if (amount >= 0) {
+    const amountConverted = amount * rate;
+    //----format amount converted
+    const amountFormated = formatFunction(to, amountConverted);
+    //----print result
+    document.getElementById('result').innerHTML = amountFormated;
+  } else if (amount < 0) {
+    document.getElementById('result').innerHTML = "<span style='color: red;'>Amount can not less than 0</span>"
+  }
+
+}
 //-------
-document.getElementById('action').addEventListener("click", function () {
+document.getElementById('amount').addEventListener("keyup", function () {
   //----get input
   let amount = document.getElementById('amount').value;
   const from = document.getElementById('inputGroupSelect01').value;
   const to = document.getElementById('inputGroupSelect02').value;
   //----------------
   //execute functions
-  converter(amount, from, to);
+  callApi(amount, from, to);
 })
+document.getElementById('inputGroupSelect01').addEventListener("change", function () {
+  //----get input
+  let amount = document.getElementById('amount').value;
+  const from = document.getElementById('inputGroupSelect01').value;
+  const to = document.getElementById('inputGroupSelect02').value;
+  //----------------
+  //execute functions
+  callApi(amount, from, to);
+})
+document.getElementById('inputGroupSelect02').addEventListener("change", function () {
+  //----get input
+  let amount = document.getElementById('amount').value;
+  const from = document.getElementById('inputGroupSelect01').value;
+  const to = document.getElementById('inputGroupSelect02').value;
+  //----------------
+  //execute functions
+  callApi(amount, from, to);
+})
+
+
+
