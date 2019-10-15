@@ -104,6 +104,25 @@ document.getElementById('inputGroupSelect02').addEventListener("change", functio
   //execute functions
   callApi(amount, from, to);
 })
-
+//-------------exchangeCoin
+let unitArray = [500000,200000,100000,50000,20000,10000,50000,2000,1000];
+let numberCoin = [];
+function exchange () {
+    let amount = 1870000;
+    for (let i=0; i < unitArray.length; i++) {
+        numberCoin[i] = Math.floor(amount/unitArray[i]);
+        if (numberCoin[i] > 0){
+            amount = amount - numberCoin[i]*unitArray[i];
+        }  
+    }
+    let finalMessage ="";
+    for (let i = 0; i < numberCoin.length; i++){
+        if (numberCoin[i] > 0)
+            {console.log(unitArray[i],numberCoin[i])
+            }
+    }
+}
+exchange ();
+//---------------------------
 
 
