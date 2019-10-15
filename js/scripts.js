@@ -55,7 +55,7 @@ async function callApi(amount, from, to) {
     let json = await result.json();
     const conversion = from + "_" + to;
     let rate = await json[conversion.toUpperCase()].val;
-    console.log(rate);
+    console.log(`result ${result} , json ${json} , ${rate,url}`);
     converter(amount, from, to, rate);
   }
 }
