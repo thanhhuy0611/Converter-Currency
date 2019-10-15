@@ -36,6 +36,9 @@ const exchangeRates = {
   },
 }
 
+
+// comment
+
 //---function format
 function formatFunction(type, value) {
   const formatter = new Intl.NumberFormat(type, {
@@ -55,7 +58,7 @@ async function callApi(amount, from, to) {
     let json = await result.json();
     const conversion = from + "_" + to;
     let rate = await json[conversion.toUpperCase()].val;
-    console.log(rate);
+    console.log(`result ${result} , json ${json} , ${rate,url}`);
     converter(amount, from, to, rate);
   }
 }
