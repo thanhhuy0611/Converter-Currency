@@ -36,6 +36,9 @@ const exchangeRates = {
   },
 }
 
+
+// comment
+
 //---function format
 function formatFunction(type, value) {
   const formatter = new Intl.NumberFormat(type, {
